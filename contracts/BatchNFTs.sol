@@ -13,7 +13,7 @@ contract BatchNFTs is Ownable, ERC721A {
 //    bool public mintPaused; 
     string private _baseTokenURI;
 
-    constructor(/*uint256 _startTime, bool _paused*/) ERC721A("ERC721A Token", "721AT") Ownable(msg.sender){
+    constructor(/*uint256 _startTime, bool _paused*/) ERC721A("EcoBalance Soil Carbon", "BCO2") Ownable(msg.sender){
 //        START_TIME = _startTime;
 //        mintPaused = _paused;
     }
