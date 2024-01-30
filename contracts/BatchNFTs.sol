@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract BatchNFTs is Ownable, ERC721A {
 
-    uint256 public constant MAX_SUPPLY = 10000;
+    uint256 public constant MAX_SUPPLY = 1000000;
 //    uint256 public constant PRICE_PER_TOKEN = 0.01 ether;
 //    uint256 public immutable START_TIME;
 //    bool public mintPaused; 
@@ -18,12 +18,13 @@ contract BatchNFTs is Ownable, ERC721A {
 //        mintPaused = _paused;
     }
 
-    function mint(address to, uint256 quantity) external payable onlyOwner {
+    function mint(address to, uint256 quantity, string calldata baseURI) external payable onlyOwner {
 //        require(!mintPaused, "Mint is paused");
 //        require(block.timestamp >= START_TIME, "Sale not started");
         require(_totalMinted() + quantity <= MAX_SUPPLY, "Max Supply Hit");
 //        require(msg.value >= quantity * PRICE_PER_TOKEN, "Insufficient Funds");
         _mint(to, quantity);
+        _baseTokenURI = baseURI;
     }
 
     function withdraw() external onlyOwner {
@@ -44,3 +45,5 @@ contract BatchNFTs is Ownable, ERC721A {
 //        mintPaused = _paused;
 //    }
 }
+
+
