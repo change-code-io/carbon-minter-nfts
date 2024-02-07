@@ -1,6 +1,6 @@
 require("dotenv").config();
 require("@nomicfoundation/hardhat-ethers");
-const { API_URL, PRIVATE_KEY } = process.env;
+const { API_URL, PRIVATE_KEY_MINTER } = process.env;
 
 module.exports = {
   solidity: "0.8.20",
@@ -9,7 +9,7 @@ module.exports = {
     hardhat: {},
     mumbai: {
       url: API_URL,
-      accounts: [`0x${PRIVATE_KEY}`],
+      accounts: [`0x${PRIVATE_KEY_MINTER}`],
     },
   },
 };
