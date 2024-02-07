@@ -1,11 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.20;
 
-import "erc721a/contracts/ERC721A.sol";
+import 'erc721a/contracts/ERC721A.sol';
+import '@openzeppelin/contracts/access/Ownable.sol';
 import "./Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "erc721a/contracts/extensions/ERC721ABurnable.sol";
 
-contract BatchNFTs is Ownable, ERC721A {
+contract BatchNFTs is Ownable, ERC721ABurnable{
 
     uint256 public constant MAX_SUPPLY = 1000000;
 //    uint256 public constant PRICE_PER_TOKEN = 0.01 ether;
@@ -38,6 +40,10 @@ contract BatchNFTs is Ownable, ERC721A {
 
     function _baseURI() internal view override returns (string memory) {
         return _baseTokenURI;
+    }
+
+     function _burn(uint256 tokenId) internal override(ERC721A) {
+        super._burn(tokenId);
     }
 
 //    function pauseMint(bool _paused) external onlyOwner {
