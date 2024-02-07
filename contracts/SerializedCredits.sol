@@ -7,7 +7,7 @@ import "./Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "erc721a/contracts/extensions/ERC721ABurnable.sol";
 
-contract BatchNFTs is Ownable, ERC721ABurnable{
+contract SerializedNFTs is Ownable, ERC721ABurnable{
 
     uint256 public constant MAX_SUPPLY = 1000000;
 //    uint256 public constant PRICE_PER_TOKEN = 0.01 ether;
