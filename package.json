@@ -1,5 +1,5 @@
 {
-  "name": "bcarbon-minter-721a",
+  "name": "carbon-minter-nfts",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -18,6 +18,6 @@
   "dependencies": {
     "@openzeppelin/contracts": "^5.0.1",
     "@openzeppelin/contracts-upgradeable": "^5.0.1",
-    "dotenv": "^16.4.1"
+    "dotenv": "^16.4.5"
   }
 }
