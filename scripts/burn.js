@@ -2,11 +2,11 @@ const hre = require("hardhat");
 
 async function main() {
 
-    const contractAddress = "0x2580571A6a68f05a7EC1E535C2e539aB7dd07848";
+    const contractAddress = "0x7F5F0F8c6Eb957A931c57a1F7a966d15aCFF6adb";
     const targetID = 2
-    const serializiedCredits = await hre.ethers.getContractAt("SerializiedCredits", contractAddress);
+    const carbon_dev = await hre.ethers.getContractAt("Carbon_dev", contractAddress);
     
-    const burnTokens = await serializiedCredits.burn(targetID);
+    const burnTokens = await carbon_dev.burn(targetID);
     console.log(`Transaction Hash: https://mumbai.polygonscan.com/tx/${burnTokens.hash}`);
 }
 

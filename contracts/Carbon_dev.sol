@@ -35,9 +35,11 @@ contract Carbon_dev is Ownable, ERC721ABurnable{
     function _burn(uint256 tokenId) internal override(ERC721A) {
         super._burn(tokenId);
     }
-    
-    function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory _data) public virtual override {
-        require(_isApprovedOrOwner(_msgSenderERC721A(), tokenId), "ERC721A: transfer caller is not owner nor approved");
-        _safeTransfer(from, to, tokenId, _data);
-    }
+
+// Must be called by token holder.    
+///    function transferFrom(address from, address to, uint256 tokenId) public virtual {
+///        _transferFrom(from, to, tokenId);
+///    }
+///}
+
 }
