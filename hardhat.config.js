@@ -10,7 +10,7 @@ module.exports = {
     hardhat: {},
     mumbai: {
       url: ALCHEMY_API_URL_MUMBAI,
-      accounts: [`0x${PRIVATE_KEY_RECIPIENT_1}`],
+      accounts: [`0x${PRIVATE_KEY_MINTER}`],
     },
   },
   etherscan: {
