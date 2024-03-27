@@ -13,7 +13,7 @@ contract Carbon is Ownable, ERC721ABurnable{
 
     string private _baseTokenURI;
 
-    constructor() ERC721A("Change Code -- BCarbon | CO2", "CC-BC-CO2") Ownable(msg.sender){}
+    constructor() ERC721A("Change Code -- Testing", "CCT") Ownable(msg.sender){}
 
     function mint_plus(address to, uint256 quantity, string calldata baseURI, string memory mint_metadata) external payable onlyOwner {
 
