@@ -2,12 +2,23 @@ const hre = require("hardhat");
 
 async function main() {
 
-    const contractAddress = "0x7b77B0683DDdD305ef026667474a985C099eE3cc";
-    const tokenIDs = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39];
+    //get all signers
+    const signers = await hre.ethers.getSigners();
+    //select desired account for burning
+    const burner = signers[0];  
+
+    const contractAddress = "0x4F45eE5b1CAdAB61771400ce394f765f5755F226";
+    const tokenIDs = Array.from({length: 2}, (_, i) => i);
+    
+    //get the contract instance
     const carbon = await hre.ethers.getContractAt("Carbon", contractAddress);
     
-    const burnTokens = await carbon.burn_plus(tokenIDs);
-    console.log(`Transaction Hash: https://mumbai.polygonscan.com/tx/${burnTokens.hash}`);
+    //connect the burner signer with the contract
+    const carbonSigned = carbon.connect(burner);
+
+    await carbonSigned.burn_plus(tokenIDs);
+
+    console.log("Tokens burned!");
 }
 
 main().catch((error) => {

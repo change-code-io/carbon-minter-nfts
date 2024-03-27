@@ -1,20 +1,29 @@
 const hre = require("hardhat");
 
 async function main() {
+    //get all signers
+    const signers = await hre.ethers.getSigners();
 
-    const contractAddress = "0x7b77B0683DDdD305ef026667474a985C099eE3cc";
+    //select desired account for minting
+    const minter = signers[0];
 
+    const contractAddress = "0x4F45eE5b1CAdAB61771400ce394f765f5755F226";
     const carbon_minter = "0x5CBaF6a447d44d52bE4b6e6a7241e067b614Da49";
-    const carbon_recipient_1 = "0x5CBaF6a447d44d52bE4b6e6a7241e067b614Da49";
+    const carbon_buffer = "0x5CBaF6a447d44d52bE4b6e6a7241e067b614Da49";
+    const carbon_recipient_1 = "0x1FFF5A920dA884A0977C08caa3518F1Ae7e7aFD9";
+    const carbon_recipient_2 = "0x78Fa5c18a80eef995a4e50b74ED8CC13aF033A93";
 
-    const baseURI = "https://best-strengthening-495962.framer.app/methodologies/soil-carbon-methodology";
+    const baseURI = "https://changecode.io";
+
+    //get the contract instance
     const carbon = await hre.ethers.getContractAt("Carbon", contractAddress);
+
+    //connect the minter signer with the contract
+    const carbonSigned = carbon.connect(minter);
     
-    const mintTokens = 
-    await carbon.mint_plus(carbon_recipient_1, 1000, baseURI, "BCR-US-00002-00001-04364-BCSC-BCVC-EO-AMSIIIR-EBG001-2023-05-10");
+    await carbonSigned.mint_plus(carbon_recipient_1, 10, baseURI, "data");
 
-
-    console.log(`Transaction Hash: https://mumbai.polygonscan.com/tx/${mintTokens.hash}`);
+    console.log("Tokens minted!");
 }
 
 main().catch((error) => {
