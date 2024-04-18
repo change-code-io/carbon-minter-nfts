@@ -6,14 +6,15 @@ import '@openzeppelin/contracts/access/Ownable.sol';
 import "./Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "erc721a/contracts/extensions/ERC721ABurnable.sol";
+import "./TokenConfig.sol";
 
 contract Carbon is Ownable, ERC721ABurnable{
 
-    uint256 public constant MAX_SUPPLY = 1000000;
+    uint256 public constant MAX_SUPPLY = TokenConfig.MAX_SUPPLY;
 
     string private _baseTokenURI;
 
-    constructor() ERC721A("Change Code -- Testing", "CCT") Ownable(msg.sender){}
+    constructor() ERC721A(TokenConfig.NAME, TokenConfig.SYMBOL) Ownable(msg.sender){}
 
     function mint_plus(address to, uint256 quantity, string calldata baseURI, string memory mint_metadata) external payable onlyOwner {
 
