@@ -2,9 +2,6 @@ node_modules
 .env
 .cursorignore
 
-config.js
-TokenConfig.sol
-
 # Hardhat files
 /cache
 /artifacts
