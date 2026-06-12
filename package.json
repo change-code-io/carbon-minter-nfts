@@ -4,7 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "health-check": "npx hardhat run scripts/chain-health-check.js --network amoy",
+    "check-tx": "npx hardhat run scripts/chain-health-check.js --network amoy",
+    "nft-stats": "npx hardhat run scripts/check-nft-stats.js --network amoy",
+    "check-balance": "npx hardhat run scripts/check-nft-stats.js --network amoy",
+    "check-token": "npx hardhat run scripts/check-nft-stats.js --network amoy",
+    "legacy-check": "npx hardhat run scripts/check-legacy-tokens.js --network matic",
+    "legacy-retire": "npx hardhat run scripts/retire_legacy.js --network matic",
+    "legacy-transfer": "npx hardhat run scripts/transfer_legacy.js --network matic"
   },
   "keywords": [],
   "author": "",
@@ -13,11 +21,12 @@
     "@nomicfoundation/hardhat-toolbox": "^4.0.0",
     "erc721a": "^4.2.3",
     "erc721a-upgradeable": "^4.2.3",
-    "hardhat": "^2.20.1"
+    "hardhat": "^2.27.0"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^5.0.1",
     "@openzeppelin/contracts-upgradeable": "^5.0.1",
+    "@openzeppelin/hardhat-upgrades": "^3.9.1",
     "dotenv": "^16.4.5"
   }
 }
